@@ -217,7 +217,7 @@ if ncMin < batteryMinChargePercent:
             cMax = cSoc
 
         # Check if target met (only if not charging)
-        if cSoc >= batteryTargetChargePercent and !isCharging:
+        if cSoc >= batteryTargetChargePercent and isCharging == False:
             if cTargetAt == -1:
                 cTargetAt = forecastTime.hour
                 
