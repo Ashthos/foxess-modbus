@@ -1,0 +1,70 @@
+# Note: this specification was generated using ChatGPT
+openapi: 3.0.0
+info:
+  title: Charge Time Api
+  version: 1.0.0
+servers:
+  - url: http://localhost
+paths:
+  /v1:
+    get:
+      summary: Get configured time range
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeRanges'
+    put:
+      summary: Update time charge time settings
+      requestBody:
+        description: Time range settings to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimeRangeInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeRanges'
+components:
+  schemas:
+    TimeRange:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        start:
+          type: string
+          format: time
+        end:
+          type: string
+          format: time
+      required:
+        - enabled
+        - start
+        - end
+    TimeRanges:
+      type: array
+      items:
+        $ref: '#/components/schemas/TimeRange'
+    TimeRangeInput:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        start:
+          type: string
+          format: time
+        end:
+          type: string
+          format: time
+      required:
+        - enabled
+        - start
+        - end
